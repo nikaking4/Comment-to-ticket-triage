@@ -1,0 +1,19 @@
+@startuml
+start
+:Receive comment;
+:Validate input (length, empty);
+:Ask AI: TICKET or NO_TICKET?;
+if (Result == TICKET?) then (yes)
+  :Ask AI for structured ticket JSON;
+  if (JSON valid?) then (yes)
+    :Normalize category and priority;
+    :Store ticket;
+  else (no)
+    :Retry once / fallback category = other;
+  endif
+else (no)
+  :Store comment only;
+endif
+:Return response;
+stop
+@enduml

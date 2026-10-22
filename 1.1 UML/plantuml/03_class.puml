@@ -1,0 +1,49 @@
+@startuml
+class Comment {
+  +id: Long
+  +text: String
+  +channel: Channel
+  +createdAt: DateTime
+}
+class Ticket {
+  +id: Long
+  +title: String
+  +category: Category
+  +priority: Priority
+  +summary: String
+  +createdAt: DateTime
+}
+enum Channel {
+  APP_REVIEW
+  WEB_FORM
+  CHAT_WIDGET
+  EMAIL
+}
+enum Category {
+  BUG
+  FEATURE
+  BILLING
+  ACCOUNT
+  OTHER
+}
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+class TriageService {
+  +process(comment: Comment): Ticket
+}
+class AiClient {
+  +decide(text: String): boolean
+  +generateTicket(text: String): TicketDraft
+}
+
+Comment "1" -- "0..1" Ticket : generates >
+Comment --> Channel
+Ticket --> Category
+Ticket --> Priority
+TriageService --> AiClient
+TriageService ..> Comment
+TriageService ..> Ticket
+@enduml

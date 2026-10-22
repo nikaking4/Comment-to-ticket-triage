@@ -1,0 +1,22 @@
+@startuml
+actor User
+participant "REST API" as API
+participant "Triage Service" as TS
+participant "AI Client" as AI
+participant "Gemini API" as G
+database DB
+
+User -> API : POST /comments {text, channel}
+API -> DB : save Comment
+API -> TS : process(comment)
+TS -> AI : decide(text)
+AI -> G : triage prompt
+G --> AI : TICKET / NO_TICKET
+alt TICKET
+  TS -> AI : generateTicket(text)
+  AI -> G : ticket generation prompt
+  G --> AI : JSON {title, category, priority, summary}
+  TS -> DB : save Ticket
+end
+API --> User : 201 Created (comment + optional ticket)
+@enduml
