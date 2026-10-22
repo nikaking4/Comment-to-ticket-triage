@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+actor "User / Customer" as U
+actor "Support Agent" as S
+actor "Gemini API" as AI <<external>>
+
+rectangle "Ticket Triage System" {
+  usecase "Submit comment" as UC1
+  usecase "View comments" as UC2
+  usecase "Analyze comment with AI" as UC3
+  usecase "Create ticket" as UC4
+  usecase "View tickets" as UC5
+}
+
+U --> UC1
+S --> UC2
+S --> UC5
+UC1 ..> UC3 : <<include>>
+UC3 ..> UC4 : <<extend>>\n[needs ticket]
+UC3 --> AI
+@enduml

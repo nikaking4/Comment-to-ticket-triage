@@ -1,0 +1,9 @@
+id,channel,comment,should_ticket,title,category,priority,summary
+1,app_review,"The app crashes every time I open it on my Pixel 8. Please fix this ASAP, I can't use it at all.",True,App crashes on launch (Pixel 8),bug,high,"User reports the app crashes immediately on launch on a Pixel 8, making it completely unusable."
+2,chat_widget,"Love the app, keep up the great work!",False,,,,
+3,web_form,I was charged twice for my monthly subscription. Please refund the duplicate payment.,True,Duplicate subscription charge,billing,high,User was billed twice for the monthly subscription and requests a refund of the duplicate payment.
+4,app_review,"Great service, but it would be awesome to have a dark mode.",True,Add dark mode,feature,low,User is satisfied overall and requests a dark mode option.
+5,email,"I can't log in anymore. The password reset email never arrives, even after checking spam.",True,Password reset email not delivered,account,medium,"User cannot log in and does not receive the password reset email, blocking account access."
+6,chat_widget,"Thanks, the support team solved my problem quickly!",False,,,,
+7,web_form,The export to PDF button does nothing when I click it. Other buttons work fine.,True,Export to PDF button unresponsive,bug,medium,"Clicking the Export to PDF button has no effect, while other buttons work normally."
+8,app_review,Ok I guess. Nothing special.,False,,,,

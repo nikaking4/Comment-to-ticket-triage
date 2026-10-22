@@ -1,0 +1,16 @@
+@startuml
+package "Ticket Triage System" {
+  [REST API\n(POST /comments, GET /comments,\nGET /tickets, GET /tickets/{id})] as API
+  [Triage Service] as TS
+  [AI Client] as AIC
+  [Repository] as REPO
+  database "Comments & Tickets\nDB" as DB
+}
+cloud "Gemini API" as GEM
+
+API --> TS
+TS --> AIC
+AIC --> GEM : HTTPS
+TS --> REPO
+REPO --> DB
+@enduml
